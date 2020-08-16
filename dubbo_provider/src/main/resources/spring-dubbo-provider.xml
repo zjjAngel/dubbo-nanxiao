@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <!--spring自动扫包，后续Dao使用-->
+    <context:component-scan base-package="com.itheima.study"/>
+    <!-- dubbo基本配置-->
+    <dubbo:application name="dubbo-provider"/>
+    <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
+    <dubbo:protocol name="dubbo" port="8882"/>
+
+    <!-- dubbo自动扫包，注解时使用-->
+    <dubbo:annotation package="com.itheima.study.dubbo.service.impl"/>
+    <!-- 构建业务对象-->
+<!--    <bean id="userService" class="com.itheima.study.dubbo.service.impl.UserServiceImpl"/>-->
+<!--    <dubbo:service interface="com.itheima.study.dubbo.service.UserService" ref="userService"/>-->
+</beans>
